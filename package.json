@@ -1,0 +1,59 @@
+{
+  "name": "firehose-mcp",
+  "version": "0.2.0",
+  "description": "MCP server for Firehose tap management, rule management, query design, and raw SSE access",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "bin": {
+    "firehose-mcp": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "publish-preflight": "npm run check && npm test && npm run build && npm pack --dry-run",
+    "preflight": "npm run publish-preflight",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "firehose",
+    "model-context-protocol",
+    "server-sent-events",
+    "lucene",
+    "streaming",
+    "rules",
+    "taps"
+  ],
+  "author": "Can Mutioglu",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/canmutioglu/firehose-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/canmutioglu/firehose-mcp/issues"
+  },
+  "homepage": "https://github.com/canmutioglu/firehose-mcp#readme",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.27.1",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "tsx": "^4.20.5",
+    "typescript": "5.9.3",
+    "vitest": "4.1.0"
+  }
+}
